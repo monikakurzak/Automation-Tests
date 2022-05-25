@@ -1,8 +1,9 @@
-It is a project to test https://automationintesting.online website. There are UI automation tests in Python and Selenium WebDriver and API tests in Postman.
+## Atiomation UI and API Test
+A project for testing https://automationintesting.online website. I contains UI automation tests in Python and Selenium WebDriver and API tests in Postman.
 
 
 ## Prerequisites
-Make sure that following modules are installed:
+Make sure that following python modules are installed:
 - selenium,  
 - unittest, 
 - time, 
@@ -13,6 +14,7 @@ Make sure that following modules are installed:
 
 
 ## Recommended environment
+Tested on given environment:
 - Ubuntu 20.04.4,
 - Python 3.8.10,
 - Firefox 100.0.2,
@@ -36,7 +38,7 @@ python run_tests.py
 - UI: Ran 5 tests in 73.885s
 - API: 
 
-![APITestResults](https://github.com/monikakurzak/Automation-Tests/blob/main/APITestResults.png?raw=true)
+![APITestResults](APITestResults.png)
 
 ## Additional comments
 Test no. 5 for now is failing because there is a bug on the page.
