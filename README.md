@@ -13,8 +13,7 @@ Make sure that following python modules are installed:
 - random.
 
 
-## Recommended environment
-Tested on given environment:
+## Tested on given environment
 - Ubuntu 20.04.4,
 - Python 3.8.10,
 - Firefox 100.0.2,
