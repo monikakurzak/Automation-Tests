@@ -26,7 +26,7 @@ Clone repository
 ```bash
 git clone
 ```
-From catalog project run command
+run command
 
 ```bash
 python run_tests.py
