@@ -1,0 +1,493 @@
+{
+	"info": {
+		"_postman_id": "fea9c67b-6126-4316-8355-7126ef1c9ae8",
+		"name": "Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19278383"
+	},
+	"item": [
+		{
+			"name": "POST HealthCheck",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const response = pm.response.json()",
+							"pm.collectionVariables.set(\"Token\", response.token);",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\" : \"admin\",\n    \"password\" : \"password123\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}/auth",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Auth",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const response = pm.response.json()",
+							"pm.collectionVariables.set(\"Token\", response.token);",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\" : \"admin\",\n    \"password\" : \"password123\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}/auth",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Create Booking",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const response = pm.response.json()",
+							"pm.collectionVariables.set(\"BookingID\", response.bookingid);",
+							"pm.collectionVariables.set(\"firstname\", response.booking.firstname);",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstname\" : \"{{$randomFirstName}}\",\n    \"lastname\" : \"{{$randomLastName}}\",\n    \"totalprice\" : {{$randomPrice}},\n    \"depositpaid\" : true,\n    \"bookingdates\" : {\n        \"checkin\" : \"{{$randomDatePast}}\",\n        \"checkout\" : \"{{$randomDateRecent}}\"\n    },\n    \"additionalneeds\" : \"{{$randomLoremText}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}/booking",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"booking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET BookingID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(",
+							"        pm.collectionVariables.get(\"firstname\")",
+							"    );",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}/booking/{{BookingID}}",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"booking",
+						"{{BookingID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Update Booking",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const response = pm.response.json()",
+							"pm.collectionVariables.set(\"firstname\", response.firstname);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Cookie",
+						"value": "token={{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstname\" : \"{{$randomFirstName}}\",\n    \"lastname\" : \"{{$randomLastName}}\",\n    \"totalprice\" : {{$randomPrice}},\n    \"depositpaid\" : true,\n    \"bookingdates\" : {\n        \"checkin\" : \"{{$randomDatePast}}\",\n        \"checkout\" : \"{{$randomDateRecent}}\"\n    },\n    \"additionalneeds\" : \"{{$randomLoremText}}\"\n}"
+				},
+				"url": {
+					"raw": "{{BaseURL}}/booking/{{BookingID}}",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"booking",
+						"{{BookingID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET BookingID Check after update",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(",
+							"        pm.collectionVariables.get(\"firstname\")",
+							"    );",
+							"});",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}/booking/{{BookingID}}",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"booking",
+						"{{BookingID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH Partial update",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const response = pm.response.json()",
+							"pm.collectionVariables.set(\"firstname\", response.firstname);",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Cookie",
+						"value": "token={{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"firstname\" : \"{{$randomFirstName}}\",\n  \"lastname\" : \"{{$randomLastName}}\"\n}"
+				},
+				"url": {
+					"raw": "{{BaseURL}}/booking/{{BookingID}}",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"booking",
+						"{{BookingID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET BookingID Check after PATCH",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(",
+							"        pm.collectionVariables.get(\"firstname\")",
+							"    );",
+							"});",
+							"",
+							"setTimeout(() => {},5000)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}/booking/{{BookingID}}",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"booking",
+						"{{BookingID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Booking",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Cookie",
+						"value": "token={{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{BaseURL}}/booking/{{BookingID}}",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"booking",
+						"{{BookingID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET BookingID Final check",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}//booking/{{BookingID}}",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"",
+						"booking",
+						"{{BookingID}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BaseURL",
+			"value": "https://restful-booker.herokuapp.com"
+		},
+		{
+			"key": "Token",
+			"value": ""
+		},
+		{
+			"key": "bookingid",
+			"value": ""
+		},
+		{
+			"key": "BookingID",
+			"value": ""
+		},
+		{
+			"key": "firstname",
+			"value": ""
+		}
+	]
+}
