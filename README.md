@@ -35,13 +35,13 @@ python run_tests.py
 ```
 
 ## Results
-- UI: Ran 5 tests in 73.885s
-- API: 
+- Selenium: Ran 5 tests in 73.885s
+- ostman: 
 
 ![APITestResults](APITestResults.png)
 
 ## Additional comments
-Test no. 5 for now is failing because there is a bug on the page.
+Test no. 5 in Selenium for now is failing because there is a bug on the page.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
