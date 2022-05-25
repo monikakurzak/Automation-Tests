@@ -35,7 +35,7 @@ python run_tests.py
 
 ## Results
 - Selenium: Ran 5 tests in 73.885s
-- ostman: 
+- Postman: 
 
 ![APITestResults](APITestResults.png)
 
