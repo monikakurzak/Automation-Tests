@@ -1,0 +1,28 @@
+<html>
+<head>
+<title>functions.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+functions.py</font>
+</center></td></tr></table>
+<pre><span class="s0">def </span><span class="s1">scroll_shim(passed_in_driver</span><span class="s0">, </span><span class="s1">object):</span>
+    <span class="s1">x = object.location[</span><span class="s2">'x'</span><span class="s1">]</span>
+    <span class="s1">y = object.location[</span><span class="s2">'y'</span><span class="s1">]</span>
+    <span class="s1">scroll_by_coord = </span><span class="s2">'window.scrollTo(%s,%s);' </span><span class="s1">% (</span>
+        <span class="s1">x</span><span class="s0">,</span>
+        <span class="s1">y</span>
+    <span class="s1">)</span>
+    <span class="s1">scroll_nav_out_of_way = </span><span class="s2">'window.scrollBy(0, -120);'</span>
+    <span class="s1">passed_in_driver.execute_script(scroll_by_coord)</span>
+    <span class="s1">passed_in_driver.execute_script(scroll_nav_out_of_way)</span></pre>
+</body>
+</html>
