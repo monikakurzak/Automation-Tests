@@ -1,5 +1,5 @@
 ## Automation UI and API tests
-A project for testing https://automationintesting.online website. I contains UI automation tests in Python and Selenium WebDriver and API tests in Postman.
+A project for testing https://automationintesting.online website. It contains UI automation tests in Python and Selenium WebDriver and API tests in Postman.
 
 
 ## Prerequisites
