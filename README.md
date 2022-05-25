@@ -1,4 +1,4 @@
-## Atiomation UI and API Test
+## Automation UI and API Test
 A project for testing https://automationintesting.online website. I contains UI automation tests in Python and Selenium WebDriver and API tests in Postman.
 
 
