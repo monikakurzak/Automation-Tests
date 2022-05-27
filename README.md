@@ -40,7 +40,7 @@ python run_tests.py
 ![APITestResults](APITestResults.png)
 
 ## Additional comments
-Test no. 5 in Selenium for now is failing because there is a bug on the page.
+Test no. 4 in Selenium for now is failing because there is a bug on the page.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
